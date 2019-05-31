@@ -22,37 +22,37 @@
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="index.html"><img class="logo" src="image/logo2.png"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.html">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="keyboard.html">Keyboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="mouse.html">Mouse</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="headphone.html">Headphone</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="mouse pad.html">Mousepad</a>
-            </li>
-          <li class="nav-item">
-              <a class="nav-link" href="#">My Page</a>
-          </li>
-        </ul>
+      <div class="container">
+          <a class="navbar-brand" href="index.php"><img class="logo" src="image/logo2.png"></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item active">
+                      <a class="nav-link" href="index.php">Home
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="keyboard.php">Keyboard</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="mouse.php">Mouse</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="headphone.php">Headphone</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="mouse pad.php">Mousepad</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="searchorder.php">Search Order</a>
+                  </li>
+              </ul>
+          </div>
       </div>
-    </div>
   </nav>
+
 
   <!-- Page Content -->
   <div class="container">
@@ -67,8 +67,7 @@
     <!-- Page Features -->
     <div class="row text-center">
         <tr>
-            <td style="background-image:url(images/my_tit_bg.gif);background-repeat:repeat-x;background-position:0px 0px" valign="bottom" height="45" align="center"><!--리스트 시작 -->
-              
+
               <table width="97%" cellspacing="0" cellpadding="0" border="0">
                       <tbody>
                       <tr>
@@ -102,7 +101,7 @@
                             </tr>
                           </tbody></table>
                           <table width="100%" cellspacing="0" cellpadding="0" border="0">
-                                              <tbody><tr>
+                              <tbody>
                 <td><table width="100%" cellspacing="0" cellpadding="0" border="0">
                   <colgroup>
                   <col width="120" align="center">
@@ -151,7 +150,7 @@
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+  </div>
 </body>
 
 </html>

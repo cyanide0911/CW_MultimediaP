@@ -15,43 +15,62 @@
 
   <!-- Custom styles for this template -->
   <link href="css/heroic-features.css" rel="stylesheet">
+<?php
 
+    $mysql_hostname = '220.92.9.189';
+    $mysql_username = 'root';
+    $mysql_password = '5607';
+    $mysql_database = 'mall';
+    $mysql_port = 3306;
+
+
+    $connect = mysqli_connect($mysql_hostname, $mysql_username, $mysql_password, $mysql_database) or die("ssx");
+
+    if ($connect) {
+        echo "SUckSEx\n";
+    }
+    else{
+        echo "fail";
+    }
+    $givenID = $_GET["pastname"];
+    echo $givenID;
+    $result = mysqli_query($connect, 'SELECT itemname, price, thumb from iteminfo');
+    ?>
 </head>
 
 <body>
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="index.html"><img class="logo" src="image/logo2.png"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.html">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="keyboard.html">Keyboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="mouse.html">Mouse</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="headphone.html">Headphone</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="mouse pad.html">Mousepad</a>
-            </li>
-          <li class="nav-item">
-              <a class="nav-link" href="#">My Page</a>
-          </li>
-        </ul>
+      <div class="container">
+          <a class="navbar-brand" href="index.php"><img class="logo" src="image/logo2.png" alt=""></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item active">
+                      <a class="nav-link" href="index.php">Home
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="keyboard.php">Keyboard</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="mouse.php">Mouse</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="headphone.php">Headphone</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="mouse pad.php">Mousepad</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="searchorder.php">Search Order</a>
+                  </li>
+              </ul>
+          </div>
       </div>
-    </div>
   </nav>
 
   <!-- Page Content -->
@@ -89,9 +108,9 @@
                           <td><!--리스트 시작 -->
                             <table width="100%" cellspacing="0" cellpadding="5" border="0">
                                                 <tbody><tr>
-                              <td class="black_bold" width="70" align="center">상품이미지(70x70)</td>
-                              <td width="*"><span class="blue">상품명</td>
-                              <td width="80" align="right"><span class="blue_bold">금액</span><span class="black_bold">원</span></td>
+                              <td class="black_bold" width="70" align="center"><? echo $givenID; ?></td>
+                                                    <td width="*"><span class="blue">상품명</span>></td>
+                              <td width="80" align="right"><span class="blue_bold"><? echo $givenID;?></span><span class="black_bold">원</span></td>
                             </tr>
                             <tr><td colspan="9" height="3" background="/skin/shop/<?=basic?>/img/divDot.gif"></td></tr>        
                             
@@ -259,7 +278,7 @@
                                             <td bgcolor="#FFFFFF" align="center"><p style="margin-top:1px;">            <a href="#" class="btn btn-primary">결제</a>
                                             </p></td>
                                         </tr>							
-                                    </tbody></table>
+                                        </tbody></table></div>
                                 </td>
                             </tr>				
                         </tbody></table>

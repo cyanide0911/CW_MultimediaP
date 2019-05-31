@@ -22,36 +22,35 @@
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="index.html"><img class="logo" src="image/logo2.png"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.html">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="keyboard.html">Keyboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="mouse.html">Mouse</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="headphone.html">Headphone</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="mouse pad.html">Mousepad</a>
-            </li>
-          <li class="nav-item">
-              <a class="nav-link" href="#">My Page</a>
-          </li>
-        </ul>
+      <div class="container">
+          <a class="navbar-brand" href="index.php"><img class="logo" src="image/logo2.png"></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item active">
+                      <a class="nav-link" href="index.php">Home
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="keyboard.php">Keyboard</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="mouse.php">Mouse</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="headphone.php">Headphone</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="mouse pad.php">Mousepad</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="searchorder.php">Search Order</a>
+                  </li>
+              </ul>
+          </div>
       </div>
-    </div>
   </nav>
 
   <!-- Page Content -->
@@ -106,6 +105,7 @@
                                               <span class="MK_txt-total">총 상품 금액</span>
                                               <strong class="MK_total" id="MK_p_total">19,000</strong>
                                               <span class="MK_txt-won">원</span>
+                                          </div>
                                           </div>
                                       </div>
                                   </div>
