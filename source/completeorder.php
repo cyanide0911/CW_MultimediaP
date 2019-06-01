@@ -15,7 +15,52 @@
 
   <!-- Custom styles for this template -->
   <link href="css/heroic-features.css" rel="stylesheet">
+    <?php
 
+    $mysql_hostname = '220.92.9.189';
+    $mysql_username = 'root';
+    $mysql_password = '5607';
+    $mysql_database = 'mall';
+    $mysql_port = 3306;
+
+
+    $connect = new mysqli($mysql_hostname, $mysql_username, $mysql_password, $mysql_database);
+
+    if ($connect->connect_error) {
+        echo "SUckSEx\n";
+    }
+    else{
+        echo "fail";
+    }
+    $givenID = (int)$_GET["itemid"];
+    $givenName = $_GET["name"];
+    $givenPhone = (string)$_GET["bmobile"];
+    $givenAddress = $_GET["baddress1"];
+    $givenPrice = (int)$_GET["itemprice"];
+
+    echo $givenID."\n";
+    echo $givenName."\n";
+    echo $givenPhone."\n";
+    echo $givenAddress."\n";
+    echo $givenPrice."\n";
+    $stmt = $connect->prepare("INSERT INTO ordertable(itemid, price, named , place, phone) values (?,?,?,?,?)");
+    $stmt->bind_param("iisss", $givenID, $givenPrice, $givenName, $givenAddress, $givenPhone);
+    $stmt->execute();
+
+    $stmt->close();
+    $connect = mysqli_connect($mysql_hostname, $mysql_username, $mysql_password, $mysql_database) or die("ssx");
+
+    if ($connect) {
+        echo "SUckSEx\n";
+    }
+    else{
+        echo "fail";
+    }
+    $result = mysqli_query($connect, 'SELECT id, itemid from ordertable order by id desc');
+    $data = mysqli_fetch_array($result) ;
+    $idid = $data['id'];
+
+    ?>
 </head>
 
 <body>
@@ -63,7 +108,7 @@
         <tbody>
           <br>
         <tr>
-          <td height="25" align="center"><!-- 211200223168-1848421876 bank -->주문하신 주문번호는 <font color="blue">(주문번호)</font> 입니다.<br><br> 주문하신 내역은 <span class="blue_bold2">마이페이지&gt;주문내역</span>에서 확인하실 수 있습니다.<br><br>비회원이신 경우 반드시 주문번호를 알고계셔야, 주문/배송 확인이 가능합니다.</td>
+          <td height="25" align="center">주문하신 주문번호는 <? echo $idid ?> 입니다.</td>
         </tr>
       </tbody></table>      
       </td>
