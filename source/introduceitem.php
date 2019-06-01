@@ -15,7 +15,39 @@
 
   <!-- Custom styles for this template -->
   <link href="css/heroic-features.css" rel="stylesheet">
+    <?php
 
+    $mysql_hostname = '220.92.9.189';
+    $mysql_username = 'root';
+    $mysql_password = '5607';
+    $mysql_database = 'mall';
+    $mysql_port = 3306;
+
+
+    $connect = mysqli_connect($mysql_hostname, $mysql_username, $mysql_password, $mysql_database) or die("succes");
+
+    if ($connect) {
+        echo "SUckSEx\n";
+    }
+    else{
+        echo "fail";
+    }
+    $givenID = $_GET["pastname"];
+
+    $result = mysqli_query($connect, 'SELECT id, itemname, price, thumb, info from iteminfo where id ='.$givenID);
+
+        $data = mysqli_fetch_array($result) ;
+        $idid = $data['id'];
+        $itname = $data['itemname'];
+        $itprice = $data['price'];
+        $itthumb = "/source/" . $data['thumb'];
+        $itinfo = "/source/". $data['info'];
+
+    mysqli_select_db($connect, $mysql_database) or die('DB 선택 실패');
+
+    mysqli_close($connect);
+
+    ?>
 </head>
 
 <body>
@@ -60,39 +92,10 @@
     <div class="page-body">
       <div class="thumb-info">
           <div class="thumb-wrap">
-              <div class="thumb"><img src="resize1.png"></div>
+              <div class="thumb"><img src="<? echo $itthumb ?>"></div>
               
           </div><!-- .thumb-wrap -->
-          <form name="form1" method="post" id="form1" action="/shop/basket.html">
-<input type="hidden" name="brandcode" value="005002000002">
-<input type="hidden" name="branduid" value="2118796">
-<input type="hidden" name="xcode" value="005">
-<input type="hidden" name="mcode" value="002">
-<input type="hidden" name="typep" value="X">
-<input type="hidden" name="ordertype">
-<input type="hidden" name="opts">
-<input type="hidden" name="mode">
-<input type="hidden" name="optioncode">
-<input type="hidden" name="optiontype">
-<input type="hidden" name="optslist">
-<input type="hidden" id="price" name="price" value="19,000">
-<input type="hidden" id="disprice" name="disprice" value="">
-<input type="hidden" id="price_wh" name="price_wh" value="19,000">
-<input type="hidden" id="disprice_wh" name="disprice_wh" value="">
-<input type="hidden" id="option_type_wh" name="option_type_wh" value="NO">
-<input type="hidden" id="prd_hybrid_min" name="prd_hybrid_min" value="1">
-<input type="hidden" name="MOBILE_USE" value="NO">
-<input type="hidden" name="product_type" id="product_type" value="NORMAL">
-<input type="hidden" name="multiopt_direct" value="">
-<input type="hidden" name="collbasket_type" value="A">
-<input type="hidden" name="package_chk_val" value="0">
-<input type="hidden" name="miniq" id="miniq" value="1">
-<input type="hidden" name="maxq" id="maxq" value="2">
-<input type="hidden" name="cart_free" value="">
-<input type="hidden" name="opt_type" value="NO">
-<input type="hidden" name="hybrid_op_price" id="hybrid_op_price" value="">
-<input type="hidden" name="spcode"><input type="hidden" name="spcode2">                            <div class="info">
-              <h3 class="tit-prd">상품명 </h3>
+              <div class="info">
               <div class="table-opt">
                   <table summary="주문수량">
                       <tbody>
@@ -100,12 +103,20 @@
                               <td colspan="2">
                                   <div class="MK_optAddWrap">
                                       <div id="MK_innerOptWrap">
-                                          <div id="MK_innerOptScroll">
                                           <div id="MK_innerOptTotal">
-                                              <span class="MK_txt-total">총 상품 금액</span>
-                                              <strong class="MK_total" id="MK_p_total">19,000</strong>
+                                              <h3 class="tit-prd"><? echo $itname?> </h3>
+                                              <span class="MK_txt-total">상품 금액</span>
+                                              <strong class="MK_total" id="MK_p_total"><? echo $itprice?></strong>
                                               <span class="MK_txt-won">원</span>
+                                              <br>
+                                              <form method="get" action="purchasepage.php">
+                                              <input type="hidden" name="itemNum" value="<? echo $idid?>">
+                                              <input type="submit" class="btn btn-primary" value="구매하기">
+                                              </form>
                                           </div>
+                                              
+                                          <div class="infoimage">
+                                              <img src="<? echo $itinfo?>">
                                           </div>
                                       </div>
                                   </div>
@@ -128,11 +139,11 @@
                   </table>
               </div><!-- .table-opt -->
               <div class="prd-btns">
-                                                      <a href="javascript:send_multi('', 'baro', '');"><span class="buy_btn">바로구매</span></a>
-                                                  </div>
+
+              </div>
 
           </div><!-- .info -->
-          </form>                        </div><!-- .thumb-info -->
+      </div><!-- .thumb-info -->
 <div id="malltb_video_player" style="margin-top: 10px; margin-bottom: 10px; text-align: center; display: none;"></div>                            
 </div><!-- detail_align -->
 

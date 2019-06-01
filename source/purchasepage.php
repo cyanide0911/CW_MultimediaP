@@ -32,10 +32,17 @@
     else{
         echo "fail";
     }
-    $givenID = $_GET["pastname"];
+    $givenID = $_GET["itemNum"];
     echo $givenID;
-    $result = mysqli_query($connect, 'SELECT itemname, price, thumb from iteminfo');
-    ?>
+    $result = mysqli_query($connect, 'SELECT id, itemname, price, thumb from iteminfo where id ='.$givenID);
+    $data = mysqli_fetch_array($result) ;
+    $idid = $data['id'];
+    $itname = $data['itemname'];
+    $itprice = $data['price'];
+    $itthumb = "/source/" . $data['thumb'];
+    mysqli_close($connect);
+
+?>
 </head>
 
 <body>
@@ -108,9 +115,11 @@
                           <td><!--리스트 시작 -->
                             <table width="100%" cellspacing="0" cellpadding="5" border="0">
                                                 <tbody><tr>
-                              <td class="black_bold" width="70" align="center"><? echo $givenID; ?></td>
-                                                    <td width="*"><span class="blue">상품명</span>></td>
-                              <td width="80" align="right"><span class="blue_bold"><? echo $givenID;?></span><span class="black_bold">원</span></td>
+                              <td class="black_bold" width="70" align="center"><img src="<? echo $itthumb?>" width="60" height="60"></td>
+                                                    <td width="*"><span class="blue"><?echo $itname?></span></td>
+                              <td width="80" align="right">
+                                  <span class="black_bold"><? echo $itprice ?>원</span>
+                              </td>
                             </tr>
                             <tr><td colspan="9" height="3" background="/skin/shop/<?=basic?>/img/divDot.gif"></td></tr>        
                             
@@ -151,7 +160,7 @@
             <td><table width="100%" cellspacing="0" cellpadding="0" border="0">
               <tbody>
               <tr>
-                <td width="367" valign="top"><!--주문고객정보 시작 -->
+                <td width="10000" valign="top"><!--주문고객정보 시작 -->
                     <table width="97%" cellspacing="0" cellpadding="0" border="0">
                       <tbody>
                       <tr>
@@ -161,28 +170,14 @@
                               <td height="35" align="left"><table width="100%" cellspacing="0" cellpadding="0" border="0">
                                   <colgroup>
                                   <col width="100" align="center">
-                                  <col width="*" align="center">
+                                  <col width="500" align="center">
                                   </colgroup>
                                   <tbody><tr>
                                     <td colspan="2" bgcolor="#FFFFFF">&nbsp;</td>
                                   </tr>
                                   <tr>
-                                    <td width="80" height="30" bgcolor="#FFFFFF" align="left">주문자 이름</td>
+                                    <td width="150" height="30" bgcolor="#FFFFFF" align="left">주문자 이름</td>
                                     <td align="left"><input name="od_bname" type="text" class="minput_gray" id="od_bname" size="20" value=""></td>
-                                  </tr>
-                                  <tr bgcolor="dbdbdb">
-                                    <td colspan="2" align="left"><img src="/skin/shop/basic/img/clear.gif" width="1" height="1"></td>
-                                  </tr>
-                                  <tr>
-                                    <td height="30" bgcolor="#FFFFFF" align="left">이메일</td>
-                                    <td align="left"><input name="od_bemail" style="weight:3000" type="text" class="minput_gray" id="od_bemail" size="40" value=""></td>
-                                  </tr>
-                                  <tr bgcolor="dbdbdb">
-                                    <td colspan="2" align="left"><img src="/skin/shop/basic/img/clear.gif" width="1" height="1"></td>
-                                  </tr>
-                                  <tr>
-                                    <td height="30" bgcolor="#FFFFFF" align="left">전화번호</td>
-                                    <td align="left"><input name="bphone" type="text" class="minput_gray" id="bphone" size="15" value=""></td>
                                   </tr>
                                   <tr bgcolor="dbdbdb">
                                     <td colspan="2" align="left"><img src="/skin/shop/basic/img/clear.gif" width="1" height="1"></td>
@@ -196,20 +191,10 @@
                                   </tr>
                                   <tr>
                                     <td height="30" bgcolor="#FFFFFF" align="left">주소</td>
-                                    <td height="20" align="left"><input name="bpost1" id="bpost1" type="text" class="minput_gray" size="3" readonly="" value="">
-                                      -
-                                      <input name="bpost2" type="text" class="minput_gray" id="bpost2" size="3" readonly="" value=""> </td>
-                                  </tr>
                                   <tr>
                                     <td height="25" bgcolor="#FFFFFF" align="left">&nbsp;</td>
                                     <td height="20" align="left"><input name="baddress1" type="text" class="minput_gray" id="baddress1" size="25" value=""></td>
                                   </tr>
-                                  <tr>
-                                    <td height="20" bgcolor="#FFFFFF" align="left">&nbsp;</td>
-                                    <td height="20" align="left"><input name="baddress2" type="text" class="minput_gray" id="baddress2" size="20" value="">
-                                        <span class="small_gray2">*나머지 주소입력</span></td>
-                                  </tr>
-                                  
                                   
                               </tbody></table></td>
                             </tr>
@@ -292,17 +277,6 @@
             <td height="10">&nbsp;</td>
           </tr>
         </tbody></table>
-        <input type="hidden" name="od_tprice_old" value="1110050">
-        <input type="hidden" name="mileage" value="0">
-        <input type="hidden" name="mileage_temp" value="0">
-        <input type="hidden" name="od_dbox" value="1">
-        <input type="hidden" name="od_dprice" value="2500">
-        <input type="hidden" name="od_save_mileage" value="0">
-        <input type="hidden" name="gopaymethod" value="">
-        <input type="hidden" name="sessionid_backup" value="2209574225-2313163897">
-        <input type="hidden" name="orderunicode" value="1558856596">
-        <input type="hidden" name="bunch_chk" value="">
-        <input type="hidden" name="btnclick" value="0">
         </form>
     <!-- /.row -->
 

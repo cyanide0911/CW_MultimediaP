@@ -105,7 +105,7 @@
 
         <div class="col-lg-3 col-md-6 mb-4">
             <div class="card h-10">
-                <form method="get" action="purchasepage.php">
+                <form method="get" action="introduceitem.php">
                 <img class="card-img-top"  src="<?echo $itthumb[0] ?>" alt="">
                 <div class="card-body">
                     <h4 class="card-title"><?echo $itname[0]; ?></h4>
@@ -124,42 +124,54 @@
 
         <div class="col-lg-3 col-md-6 mb-4">
             <div class="card h-10">
-                <img class="card-img-top" src="<?echo $itthumb[1] ?>" alt="">
-                <div class="card-body">
-                    <h4 class="card-title"><?echo $itname[1]; ?></h4>
-                    <p class="card-text"><? echo $itprice[1]."원"?></p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">바로 구매</a>
+                <form method="get" action="introduceitem.php">
+                    <img class="card-img-top"  src="<?echo $itthumb[1] ?>" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title"><?echo $itname[1]; ?></h4>
+                        <p class="card-text"><? echo $itprice[1]."원"?></p>
+                    </div>
+                    <div class="card-footer">
+                        <input type="hidden" name="pastname" value="<?echo $idid[1]?>">
+                        <input type="submit" class= "btn btn-primary" value="바로 구매">
 
-                </div>
+
+                    </div>
+                </form>
             </div>
         </div>
 
         <div class="col-lg-3 col-md-6 mb-4">
             <div class="card h-10">
-                <img class="card-img-top" src="<?echo $itthumb[2] ?>" alt="">
-                <div class="card-body">
-                    <h4 class="card-title"><?echo $itname[2]; ?></h4>
-                    <p class="card-text"><? echo $itprice[2]."원"?></p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">바로 구매</a>
+                <form method="get" action="introduceitem.php">
+                    <img class="card-img-top"  src="<?echo $itthumb[2] ?>" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title"><?echo $itname[2]; ?></h4>
+                        <p class="card-text"><? echo $itprice[2]."원"?></p>
+                    </div>
+                    <div class="card-footer">
+                        <input type="hidden" name="pastname" value="<?echo $idid[2]?>">
+                        <input type="submit" class= "btn btn-primary" value="바로 구매">
 
-                </div>
+
+                    </div>
+                </form>
             </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-4">
             <div class="card h-10">
-                <img class="card-img-top" src="<?echo $itthumb[3] ?>" alt="">
-                <div class="card-body">
-                    <h4 class="card-title"><?echo $itname[3]; ?></h4>
-                    <p class="card-text"><? echo $itprice[3]."원"?></p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">바로 구매</a>
+                <form method="get" action="introduceitem.php">
+                    <img class="card-img-top"  src="<?echo $itthumb[3] ?>" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title"><?echo $itname[3]; ?></h4>
+                        <p class="card-text"><? echo $itprice[3]."원"?></p>
+                    </div>
+                    <div class="card-footer">
+                        <input type="hidden" name="pastname" value="<?echo $idid[3]?>">
+                        <input type="submit" class= "btn btn-primary" value="바로 구매">
 
-                </div>
+
+                    </div>
+                </form>
             </div>
         </div>
 
