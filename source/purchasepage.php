@@ -197,7 +197,8 @@
                                   </tbody></table></td>
                             </tr>
                             <tr>
-                              <td>&nbsp;</td>
+                              <td>      <input type="submit" class="btn btn-primary" value="결제">
+                                  &nbsp;</td>
                             </tr>
                         </tbody></table></td>
                       </tr>
@@ -272,7 +273,6 @@
 
       <input type="hidden" name="itemprice" value="<? echo $itprice ?>"
       <input type="hidden" name="itemid" value="<? echo $givenID?>">
-      <input type="submit" class="btn btn-primary" value="결제">
       ...
         </tbody></table>
     </form>

@@ -65,13 +65,15 @@
     </header>
 
     <!-- Page Features -->
-    <div class="row text-center">
+      <form action="viewOrder.php" method="get">
+          <div class="row text-center">
     <h1>주문번호를 입력하세요</h1>
     
-    <input type="text" name="" id="ahealth">
-    <input type="button" value="주문조회" id="calc">
+    <input type="text" name="ordernumber" value="">
+    <input type="submit" class="btn btn-primary" value="주문조회" id="calc">
 
   </div>
+          </form>
   <!-- /.container -->
 
   <!-- Footer -->

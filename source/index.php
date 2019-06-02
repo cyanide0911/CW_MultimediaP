@@ -96,7 +96,6 @@
 
     <!-- Page Features -->
     <div class="row text-center">
-
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-10">
           <img class="card-img-top" src="<?echo $itthumb[0] ?>" alt="">
@@ -104,8 +103,11 @@
             <h4 class="card-title"><?echo $itname[0]; ?></h4>
             <p class="card-text"><? echo $itprice[0]."원"?></p>
           </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">바로 구매</a>
+            <form action="introduceitem.php" method="get">
+            <div class="card-footer">
+                <input type="hidden" name="pastname" value="<?echo $idid[0]?>">
+            <input type="submit" class="btn btn-primary" value="바로 구매">
+            </form>
 
           </div>
         </div>
@@ -118,8 +120,11 @@
             <h4 class="card-title"><? echo $itname[4]?></h4>
             <p class="card-text"><? echo $itprice[4]."원" ?></p>
           </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">바로 구매</a>
+            <form action="introduceitem.php" method="get">
+                <div class="card-footer">
+                    <input type="hidden" name="pastname" value="<?echo $idid[4]?>">
+                    <input type="submit" class="btn btn-primary" value="바로 구매">
+            </form>
           </div>
         </div>
       </div>
@@ -131,8 +136,11 @@
                   <h4 class="card-title"><? echo $itname[8]?></h4>
                   <p class="card-text"><? echo $itprice[8]."원" ?></p>
               </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">바로 구매</a>
+              <form action="introduceitem.php" method="get">
+                  <div class="card-footer">
+                      <input type="hidden" name="pastname" value="<?echo $idid[8]?>">
+                      <input type="submit" class="btn btn-primary" value="바로 구매">
+              </form>
           </div>
         </div>
       </div>
@@ -144,8 +152,11 @@
                   <h4 class="card-title"><? echo $itname[12]?></h4>
                   <p class="card-text"><? echo $itprice[12]."원" ?></p>
               </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">바로 구매</a>
+              <form action="introduceitem.php" method="get">
+                  <div class="card-footer">
+                      <input type="hidden" name="pastname" value="<?echo $idid[12]?>">
+                      <input type="submit" class="btn btn-primary" value="바로 구매">
+              </form>
           </div>
         </div>
       </div>
