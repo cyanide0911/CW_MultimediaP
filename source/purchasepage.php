@@ -271,10 +271,10 @@
             <td height="10">&nbsp;</td>
           </tr>
 
-      <input type="hidden" name="itemprice" value="<? echo $itprice ?>"
-      <input type="hidden" name="itemid" value="<? echo $givenID?>">
-      ...
         </tbody></table>
+
+        <input type="hidden" name="itemprice" value="<? echo $itprice ?>">
+        <input type="hidden" name="itemid" value="<? echo $givenID ?>">
     </form>
     <!-- /.row -->
 

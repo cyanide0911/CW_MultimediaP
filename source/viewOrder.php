@@ -15,7 +15,47 @@
 
   <!-- Custom styles for this template -->
   <link href="css/heroic-features.css" rel="stylesheet">
+<?php
+$mysql_hostname = '220.92.9.189';
+$mysql_username = 'root';
+$mysql_password = '5607';
+$mysql_database = 'mall';
+$mysql_port = 3306;
 
+
+$connect = new mysqli($mysql_hostname, $mysql_username, $mysql_password, $mysql_database);
+
+if (!$connect->connect_error) {
+    echo "SUckSEx\n";
+}
+else{
+    echo "fail";
+}
+$givenID = $_GET["ordernumber"];
+
+$stmt = $connect->prepare("SELECT id ,itemid, named, place, price from ordertable where id = ? ");
+$stmt->bind_param("i", $givenID);
+$stmt->execute();
+$result = $stmt->get_result();
+$stmt->close();
+
+$data = $result->fetch_assoc();
+$odid = $data['id'];
+$oditid = $data['itemid'];
+$odname = $data['named'];
+$odplace = $data['place'];
+$odprice = $data['price'];
+
+$stmt = $connect->prepare("SELECT id ,itemname from iteminfo  where id = ? ");
+$stmt->bind_param("i", $oditid);
+$stmt->execute();
+$result = $stmt->get_result();
+$stmt->close();
+$data = $result->fetch_assoc();
+$itid = $data['id'];
+$itname = $data['itemname'];
+$connect->close()
+?>
 </head>
 
 <body>
@@ -73,8 +113,8 @@
                       <tr>
                         <td><table width="100%" cellspacing="0" cellpadding="0" border="0">
                             <tbody><tr>
-                              <td width="6"><img src="/skin/shop/basic/img/list_left.gif" alt="" width="6" height="32"></td>
-                              <td class="yellow" background="/skin/shop/basic/img/list_bg.gif" align="center"><table width="100%" cellspacing="0" cellpadding="0" border="0">
+                              <td width="6"></td>
+                              <td class="yellow" align="center"><table width="100%" cellspacing="0" cellpadding="0" border="0">
                                   <colgroup>
                                   <col width="120" align="center">
                                   <col width="1" align="center">
@@ -92,12 +132,15 @@
                                   </colgroup>
                                   <tbody><tr>
                                     <td align="center">상품코드</td>
-                                    <td align="center"><img src="/skin/shop/basic/img/line.gif" alt="" width="1" height="12"></td>
+                                    <td align="center"width="1"></td>
+
                                     <td align="center">상품명</td>
-                                    <td align="center"><img src="/skin/shop/basic/img/line.gif" alt="" width="1" height="12"></td>
+                                    <td align="center"width="1"></td>
+
+                                    <td align="center">가격</td>
                                   </tr>
                                 </tbody></table></td>
-                              <td width="6"><img src="/skin/shop/basic/img/list_right.gif" alt="" width="6" height="32"></td>
+                              <td width="6"></td>
                             </tr>
                           </tbody></table>
                           <table width="100%" cellspacing="0" cellpadding="0" border="0">
@@ -119,22 +162,27 @@
                   <col width="65" align="center">
                   </colgroup>
                   <tbody><tr>
-                  <td class="green_bold" height="30" align="center">(상품코드)</td>
+                  <td class="green_bold" height="30" align="center"><?echo $odid?></td>
                   <td align="center">&nbsp;</td>
-                  <td> (상품명) </td>
+                  <td align="center"><? echo $itname ?> </td>
                   <td align="center">&nbsp;</td>
-                  <td align="center">(가격)</td>
+                  <td align="center"><?echo $odprice?></td>
                   <td align="center">&nbsp;</td>
-                  </tr>
+                 </tr>
                 </tbody></table></td>
               </tr>								
                                             
                           </tbody></table></td>
                       </tr>
                     </tbody></table>
+                    <form action="" method="GET">
+                    <input type="hidden" name="cancel" value="true">
+                    <input type="submit" class="btn btn-primary" value="주문 취소">
+                    </form>
               
               <!--리스트 끝 --></td>
           </tr>
+        
 
   </div>
   <!-- /.container -->

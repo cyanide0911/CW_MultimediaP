@@ -32,11 +32,11 @@
     else{
         echo "fail";
     }
-    $givenID = (int)$_GET["itemid"];
+    $givenID = $_GET["itemid"];
     $givenName = $_GET["name"];
     $givenPhone = (string)$_GET["bmobile"];
     $givenAddress = $_GET["baddress1"];
-    $givenPrice = (int)$_GET["itemprice"];
+    $givenPrice = (string)$_GET["itemprice"];
 
     echo $givenID."\n";
     echo $givenName."\n";
@@ -48,7 +48,9 @@
     $stmt->execute();
 
     $stmt->close();
+    $connect->close();
     $connect = mysqli_connect($mysql_hostname, $mysql_username, $mysql_password, $mysql_database) or die("ssx");
+
 
     if ($connect) {
         echo "SUckSEx\n";
