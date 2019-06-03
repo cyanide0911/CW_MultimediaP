@@ -33,7 +33,7 @@ else{
 }
 $givenID = $_GET["ordernumber"];
 
-$stmt = $connect->prepare("SELECT id ,itemid, named, place, price from ordertable where id = ? ");
+$stmt = $connect->prepare("SELECT id ,itemid, named, place, price, phone from ordertable where id = ? ");
 $stmt->bind_param("i", $givenID);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -45,6 +45,7 @@ $oditid = $data['itemid'];
 $odname = $data['named'];
 $odplace = $data['place'];
 $odprice = $data['price'];
+$odphone = $data['phone'];
 
 $stmt = $connect->prepare("SELECT id ,itemname from iteminfo  where id = ? ");
 $stmt->bind_param("i", $oditid);
@@ -142,9 +143,10 @@ $connect->close()
                                 </tbody></table></td>
                               <td width="6"></td>
                             </tr>
-                          </tbody></table>
-                          <table width="100%" cellspacing="0" cellpadding="0" border="0">
-                              <tbody>
+                          </tbody>
+                            </table>
+                            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                <tbody>
                 <td><table width="100%" cellspacing="0" cellpadding="0" border="0">
                   <colgroup>
                   <col width="120" align="center">
@@ -173,10 +175,89 @@ $connect->close()
               </tr>								
                                             
                           </tbody></table></td>
+
+                                  </tr>
+
+                                  </tbody></table></td>
                       </tr>
-                    </tbody></table>
-                    <form action="" method="GET">
+                    </tbody>
+        </table>
+        <table width="97%" cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+            <tr>
+                <td><table width="100%" cellspacing="0" cellpadding="0" border="0">
+                        <tbody><tr>
+                            <td width="6"></td>
+                            <td class="yellow" align="center"><table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                    <colgroup>
+                                        <col width="120" align="center">
+                                        <col width="1" align="center">
+                                        <col width="*" align="center">
+                                        <col width="1" align="center">
+                                        <col width="100" align="center">
+                                        <col width="1" align="center">
+                                        <col width="50" align="center">
+                                        <col width="1" align="center">
+                                        <col width="100" align="center">
+                                        <col width="1" align="center">
+                                        <col width="60" align="center">
+                                        <col width="1" align="center">
+                                        <col width="60" align="center">
+                                    </colgroup>
+                                    <tbody><tr>
+                                        <td align="center">주문자명</td>
+                                        <td align="center"width="1"></td>
+
+                                        <td align="center">핸드폰 번호</td>
+                                        <td align="center"width="1"></td>
+
+                                        <td align="center">주소</td>
+                                    </tr>
+                                    </tbody></table></td>
+                            <td width="6"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                        <tbody>
+                        <td><table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                <colgroup>
+                                    <col width="120" align="center">
+                                    <col width="1" align="center">
+                                    <col width="*" align="left">
+                                    <col width="1" align="center">
+                                    <col width="100" align="center">
+                                    <col width="1" align="center">
+                                    <col width="35" align="center">
+                                    <col width="1" align="center">
+                                    <col width="90" align="center">
+                                    <col width="1" align="center">
+                                    <col width="60" align="center">
+                                    <col width="1" align="center">
+                                    <col width="65" align="center">
+                                </colgroup>
+                                <tbody><tr>
+                                    <td class="green_bold" height="30" align="center"><?echo $odname?></td>
+                                    <td align="center">&nbsp;</td>
+                                    <td align="center"><? echo $odphone ?> </td>
+                                    <td align="center">&nbsp;</td>
+                                    <td align="center"><?echo $odplace?></td>
+                                    <td align="center">&nbsp;</td>
+                                </tr>
+                                </tbody></table></td>
+                        </tr>
+
+                        </tbody></table></td>
+
+            </tr>
+
+            </tbody></table></td>
+        </tr>
+        </tbody></table>
+
+                    <form action="cancelcomplete.php" method="GET">
                     <input type="hidden" name="cancel" value="true">
+                        <input type="hidden" name="odid" value="<? echo $odid?>">
                     <input type="submit" class="btn btn-primary" value="주문 취소">
                     </form>
               
