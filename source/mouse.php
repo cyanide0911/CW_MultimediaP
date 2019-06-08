@@ -24,26 +24,25 @@
     $mysql_port = 3306;
 
 
-    $connect = mysqli_connect($mysql_hostname, $mysql_username, $mysql_password, $mysql_database) or die("ssx");
+    $connect = mysqli_connect($mysql_hostname, $mysql_username, $mysql_password, $mysql_database) or die("DB 연결 실패");
 
     if ($connect) {
-        echo "SUckSEx\n";
+   
     }
     else{
         echo "fail";
     }
 
-    $result = mysqli_query($connect, 'SELECT id, itemname, price, thumb from iteminfo');
+    $result = mysqli_query($connect, 'SELECT id, itemname, price, thumb from iteminfo');    //상품정보테이블에서 상품번호, 상품명, 상품가격, 상품이미지 검색
 
-    for($cnt = 0 ; $data = mysqli_fetch_array($result) ; $cnt+=1) {
+    for($cnt = 0 ; $data = mysqli_fetch_array($result) ; $cnt+=1) {   //DB에서 검색한 데이터 레코드형태로 반환
         $idid[$cnt] = $data['id'];
         $itname[$cnt] = $data['itemname'];
         $itprice[$cnt] = $data['price'];
         $itthumb[$cnt] = "/source/" . $data['thumb'];
     }
-    mysqli_select_db($connect, $mysql_database) or die('DB 선택 실패');
 
-    mysqli_close($connect);
+    mysqli_close($connect);   //연결종료
 
     ?>
 </head>
@@ -97,7 +96,7 @@
     <!-- Page Features -->
     <div class="row text-center">
 
-        <div class="col-lg-3 col-md-6 mb-4">
+        <div class="col-lg-3 col-md-6 mb-4">        <!--상품이미지, 상품명, 상품가격과 구매버튼 화면에 출력-->
             <div class="card h-10">
                 <form method="get" action="introduceitem.php">
                     <img class="card-img-top"  src="<?echo $itthumb[8] ?>" alt="">
@@ -116,7 +115,7 @@
 
         </div>
 
-        <div class="col-lg-3 col-md-6 mb-4">
+        <div class="col-lg-3 col-md-6 mb-4">        <!--상품이미지, 상품명, 상품가격과 구매버튼 화면에 출력-->
             <div class="card h-10">
                 <form method="get" action="introduceitem.php">
                     <img class="card-img-top"  src="<?echo $itthumb[9] ?>" alt="">
@@ -134,7 +133,7 @@
             </div>
         </div>
 
-        <div class="col-lg-3 col-md-6 mb-4">
+        <div class="col-lg-3 col-md-6 mb-4">        <!--상품이미지, 상품명, 상품가격과 구매버튼 화면에 출력-->
             <div class="card h-10">
                 <form method="get" action="introduceitem.php">
                     <img class="card-img-top"  src="<?echo $itthumb[10] ?>" alt="">
@@ -151,7 +150,7 @@
                 </form>
             </div>
         </div>
-        <div class="col-lg-3 col-md-6 mb-4">
+        <div class="col-lg-3 col-md-6 mb-4">        <!--상품이미지, 상품명, 상품가격과 구매버튼 화면에 출력-->
             <div class="card h-10">
                 <form method="get" action="introduceitem.php">
                     <img class="card-img-top"  src="<?echo $itthumb[11] ?>" alt="">

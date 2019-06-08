@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
+  <!--메타데이터 작성-->
   <title>토르컴</title>
 
   <!-- Bootstrap core CSS -->
@@ -17,31 +17,31 @@
   <link href="css/heroic-features.css" rel="stylesheet">
     <?php
 
-    $mysql_hostname = '220.92.9.189';
-    $mysql_username = 'root';
-    $mysql_password = '5607';
-    $mysql_database = 'mall';
-    $mysql_port = 3306;
+    $mysql_hostname = '220.92.9.189';   //접속ip
+    $mysql_username = 'root';   //접속계정
+    $mysql_password = '5607';   //접속패스워드
+    $mysql_database = 'mall';   //접속db명
+    $mysql_port = 3306;   //접속포트
 
 
-    $connect = mysqli_connect($mysql_hostname, $mysql_username, $mysql_password, $mysql_database) or die("ssx");
+    $connect = mysqli_connect($mysql_hostname, $mysql_username, $mysql_password, $mysql_database) or die("DB연결 실패");    //DB연결
 
     if ($connect) {
-        echo "SUckSEx\n";
+     
     }
     else{
-        echo "fail";
+        echo "fail";  //DB연결 실패시 오류문출력
     }
 
-    $result = mysqli_query($connect, 'SELECT id, itemname, price, thumb from iteminfo');
+    $result = mysqli_query($connect, 'SELECT id, itemname, price, thumb from iteminfo'); //상품id, 상품명, 가격, 이미지 추출
 
-    for($cnt = 0 ; $data = mysqli_fetch_array($result) ; $cnt+=1) {
+    for($cnt = 0 ; $data = mysqli_fetch_array($result) ; $cnt+=1) {   //for문 돌리면서 상품정보 상품id, 상품명, 상품가격, 상품이미지 배열에 대입
         $idid[$cnt] = $data['id'];
         $itname[$cnt] = $data['itemname'];
         $itprice[$cnt] = $data['price'];
         $itthumb[$cnt] = "/source/" . $data['thumb'];
     }
-    mysqli_select_db($connect, $mysql_database) or die('DB 선택 실패');
+     
 
     mysqli_close($connect);
 
@@ -55,7 +55,7 @@
     <div class="container">
       <a class="navbar-brand" href="index.php"><img class="logo" src="image/logo2.png"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>     
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
@@ -99,7 +99,7 @@
 
         <div class="col-lg-3 col-md-6 mb-4">
             <div class="card h-10">
-                <form method="get" action="introduceitem.php">
+                <form method="get" action="introduceitem.php">        <!--상품이미지, 상품명, 상품가격과 구매버튼 화면에 출력-->
                     <img class="card-img-top"  src="<?echo $itthumb[4] ?>" alt="">
                     <div class="card-body">
                         <h4 class="card-title"><?echo $itname[4]; ?></h4>
@@ -118,7 +118,7 @@
 
         <div class="col-lg-3 col-md-6 mb-4">
             <div class="card h-10">
-                <form method="get" action="introduceitem.php">
+                <form method="get" action="introduceitem.php">      <!--상품이미지, 상품명, 상품가격과 구매버튼 화면에 출력-->
                     <img class="card-img-top"  src="<?echo $itthumb[5] ?>" alt="">
                     <div class="card-body">
                         <h4 class="card-title"><?echo $itname[5]; ?></h4>
@@ -136,7 +136,7 @@
 
         <div class="col-lg-3 col-md-6 mb-4">
             <div class="card h-10">
-                <form method="get" action="introduceitem.php">
+                <form method="get" action="introduceitem.php">      <!--상품이미지, 상품명, 상품가격과 구매버튼 화면에 출력-->
                     <img class="card-img-top"  src="<?echo $itthumb[6] ?>" alt="">
                     <div class="card-body">
                         <h4 class="card-title"><?echo $itname[6]; ?></h4>
@@ -153,7 +153,7 @@
         </div>
         <div class="col-lg-3 col-md-6 mb-4">
             <div class="card h-10">
-                <form method="get" action="introduceitem.php">
+                <form method="get" action="introduceitem.php">      <!--상품이미지, 상품명, 상품가격과 구매버튼 화면에 출력-->
                     <img class="card-img-top"  src="<?echo $itthumb[7] ?>" alt="">
                     <div class="card-body">
                         <h4 class="card-title"><?echo $itname[7]; ?></h4>

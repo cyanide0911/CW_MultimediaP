@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
+  <!--메타데이터 작성-->
   <title>토르컴</title>
 
   <!-- Bootstrap core CSS -->
@@ -17,42 +17,36 @@
   <link href="css/heroic-features.css" rel="stylesheet">
     <?php
 
-    $mysql_hostname = '220.92.9.189';
-    $mysql_username = 'root';
-    $mysql_password = '5607';
-    $mysql_database = 'mall';
-    $mysql_port = 3306;
+    $mysql_hostname = '220.92.9.189';   //접속ip
+    $mysql_username = 'root';         //접속계정
+    $mysql_password = '5607';       //접속패스워드
+    $mysql_database = 'mall';       //접속DB명
+    $mysql_port = 3306;             //접속포트
 
 
-    $connect = mysqli_connect($mysql_hostname, $mysql_username, $mysql_password, $mysql_database) or die("ssx");
+    $connect = mysqli_connect($mysql_hostname, $mysql_username, $mysql_password, $mysql_database) or die("DB 연결 실패");     //DB연결
 
     if ($connect) {
-        echo "SUckSEx\n";
     }
     else{
-        echo "fail";
+        echo "fail";    //DB연결 실패시 오류문 출력
     }
 
-    $result = mysqli_query($connect, 'SELECT id, itemname, price, thumb from iteminfo');
+    $result = mysqli_query($connect, 'SELECT id, itemname, price, thumb from iteminfo');        //상품id, 상품명, 가걱, 상품이미지 테이블에서 검색
 
-    for($cnt = 0 ; $data = mysqli_fetch_array($result) ; $cnt+=1) {
-        $idid[$cnt] = $data['id'];
+    for($cnt = 0 ; $data = mysqli_fetch_array($result) ; $cnt+=1) {       //가져온데이터 레코드 1개씩 대입
+        $idid[$cnt] = $data['id'];          
         $itname[$cnt] = $data['itemname'];
         $itprice[$cnt] = $data['price'];
         $itthumb[$cnt] = "/source/" . $data['thumb'];
     }
-    mysqli_select_db($connect, $mysql_database) or die('DB 선택 실패');
 
-    mysqli_close($connect);
+    mysqli_close($connect);       //sql문 종료
 
 
 
 
     ?>
-    <script>
-        function setChildValue(index) {
-            window.location.href = "searchorder.php?index=" + index;
-        }</script>
 </head>
 
 <body>
@@ -103,9 +97,9 @@
     <!-- Page Features -->
     <div class="row text-center">
 
-        <div class="col-lg-3 col-md-6 mb-4">
+        <div class="col-lg-3 col-md-6 mb-4">          <!--상품이미지, 상품명, 상품가격과 구매버튼 화면에 출력-->
             <div class="card h-10">
-                <form method="get" action="introduceitem.php">
+                <form method="get" action="introduceitem.php">        
                 <img class="card-img-top"  src="<?echo $itthumb[0] ?>" alt="">
                 <div class="card-body">
                     <h4 class="card-title"><?echo $itname[0]; ?></h4>
@@ -122,7 +116,7 @@
 
         </div>
 
-        <div class="col-lg-3 col-md-6 mb-4">
+        <div class="col-lg-3 col-md-6 mb-4">        <!--상품이미지, 상품명, 상품가격과 구매버튼 화면에 출력-->
             <div class="card h-10">
                 <form method="get" action="introduceitem.php">
                     <img class="card-img-top"  src="<?echo $itthumb[1] ?>" alt="">
@@ -140,7 +134,7 @@
             </div>
         </div>
 
-        <div class="col-lg-3 col-md-6 mb-4">
+        <div class="col-lg-3 col-md-6 mb-4">        <!--상품이미지, 상품명, 상품가격과 구매버튼 화면에 출력-->
             <div class="card h-10">
                 <form method="get" action="introduceitem.php">
                     <img class="card-img-top"  src="<?echo $itthumb[2] ?>" alt="">
@@ -157,7 +151,7 @@
                 </form>
             </div>
         </div>
-        <div class="col-lg-3 col-md-6 mb-4">
+        <div class="col-lg-3 col-md-6 mb-4">        <!--상품이미지, 상품명, 상품가격과 구매버튼 화면에 출력-->
             <div class="card h-10">
                 <form method="get" action="introduceitem.php">
                     <img class="card-img-top"  src="<?echo $itthumb[3] ?>" alt="">
