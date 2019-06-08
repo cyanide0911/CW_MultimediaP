@@ -16,46 +16,46 @@
   <!-- Custom styles for this template -->
   <link href="css/heroic-features.css" rel="stylesheet">
 <?php
-$mysql_hostname = '220.92.9.189';
-$mysql_username = 'root';
-$mysql_password = '5607';
-$mysql_database = 'mall';
-$mysql_port = 3306;
+$mysql_hostname = '220.92.9.189';           //접속ip
+$mysql_username = 'root';                   //접속계정
+$mysql_password = '5607';                   //접속패스워드
+$mysql_database = 'mall';                   //접속DB명
+$mysql_port = 3306;                         //접속포트
 
 
-$connect = new mysqli($mysql_hostname, $mysql_username, $mysql_password, $mysql_database);
+$connect = new mysqli($mysql_hostname, $mysql_username, $mysql_password, $mysql_database);     //DB연결
 
 if (!$connect->connect_error) {
-    echo "SUckSEx\n";
+    
 }
 else{
-    echo "fail";
+    echo "fail";        //연결실패시 오류문출력
 }
-$givenID = $_GET["ordernumber"];
+$givenID = $_GET["ordernumber"];            //주문번호 입력
 
-$stmt = $connect->prepare("SELECT id ,itemid, named, place, price, phone from ordertable where id = ? ");
-$stmt->bind_param("i", $givenID);
-$stmt->execute();
-$result = $stmt->get_result();
-$stmt->close();
+$stmt = $connect->prepare("SELECT id ,itemid, named, place, price, phone from ordertable where id = ? ");       //입력받은 주문번호로 주문번호, 상품명, 주문자명, 주소, 가격,  휴대폰번호 검색
+$stmt->bind_param("i", $givenID);           //입력받은 주문번호 파라미터로 넘김
+$stmt->execute();                           //sql문 실행
+$result = $stmt->get_result();              //검색결과 변수에 저장
+$stmt->close();                             //sql문 종료
 
-$data = $result->fetch_assoc();
-$odid = $data['id'];
-$oditid = $data['itemid'];
-$odname = $data['named'];
-$odplace = $data['place'];
-$odprice = $data['price'];
-$odphone = $data['phone'];
+$data = $result->fetch_assoc();             //읽어온 데이터 배열형태로 데이터에 저장
+$odid = $data['id'];                         //주문번호 저장
+$oditid = $data['itemid'];                  //상품번번 저장
+$odname = $data['named'];                   //주문자명 저장
+$odplace = $data['place'];                  //주소 저장
+$odprice = $data['price'];                  //상품가격 저장
+$odphone = $data['phone'];                  //휴대폰번호 저장
 
-$stmt = $connect->prepare("SELECT id ,itemname from iteminfo  where id = ? ");
+$stmt = $connect->prepare("SELECT id ,itemname from iteminfo  where id = ? ");  //상품번호로 상품번호, 상품명 검색
 $stmt->bind_param("i", $oditid);
 $stmt->execute();
-$result = $stmt->get_result();
+$result = $stmt->get_result();      //검색한데이터 변수에 저장
 $stmt->close();
-$data = $result->fetch_assoc();
-$itid = $data['id'];
-$itname = $data['itemname'];
-$connect->close()
+$data = $result->fetch_assoc();     
+$itid = $data['id'];                //상품번호 뽑아서 저장
+$itname = $data['itemname'];        //상품명 뽑아서 자장
+$connect->close()               
 ?>
 </head>
 
@@ -132,7 +132,7 @@ $connect->close()
                                   <col width="60" align="center">
                                   </colgroup>
                                   <tbody><tr>
-                                    <td align="center">상품코드</td>
+                                    <td align="center">상품코드</td>           
                                     <td align="center"width="1"></td>
 
                                     <td align="center">상품명</td>
@@ -164,11 +164,11 @@ $connect->close()
                   <col width="65" align="center">
                   </colgroup>
                   <tbody><tr>
-                  <td class="green_bold" height="30" align="center"><?echo $odid?></td>
+                  <td class="green_bold" height="30" align="center"><?echo $odid?></td>         <!--주문번호출력-->    
                   <td align="center">&nbsp;</td>
-                  <td align="center"><? echo $itname ?> </td>
+                  <td align="center"><? echo $itname ?> </td>           <!--상품명출력-->
                   <td align="center">&nbsp;</td>
-                  <td align="center"><?echo $odprice?></td>
+                  <td align="center"><?echo $odprice?></td>             <!--가격출력-->
                   <td align="center">&nbsp;</td>
                  </tr>
                 </tbody></table></td>
@@ -205,7 +205,7 @@ $connect->close()
                                         <col width="60" align="center">
                                     </colgroup>
                                     <tbody><tr>
-                                        <td align="center">주문자명</td>
+                                        <td align="center">주문자명</td>            
                                         <td align="center"width="1"></td>
 
                                         <td align="center">핸드폰 번호</td>
@@ -237,11 +237,11 @@ $connect->close()
                                     <col width="65" align="center">
                                 </colgroup>
                                 <tbody><tr>
-                                    <td class="green_bold" height="30" align="center"><?echo $odname?></td>
+                                    <td class="green_bold" height="30" align="center"><?echo $odname?></td>     <!--주문자명 출력-->
                                     <td align="center">&nbsp;</td>
-                                    <td align="center"><? echo $odphone ?> </td>
+                                    <td align="center"><? echo $odphone ?> </td>                <!--휴대폰번호 출력-->
                                     <td align="center">&nbsp;</td>
-                                    <td align="center"><?echo $odplace?></td>
+                                    <td align="center"><?echo $odplace?></td>                   <!--주소 출력-->
                                     <td align="center">&nbsp;</td>
                                 </tr>
                                 </tbody></table></td>
@@ -258,7 +258,7 @@ $connect->close()
                     <form action="cancelcomplete.php" method="GET">
                     <input type="hidden" name="cancel" value="true">
                         <input type="hidden" name="odid" value="<? echo $odid?>">
-                    <input type="submit" class="btn btn-primary" value="주문 취소">
+                    <input type="submit" class="btn btn-primary" value="주문 취소">     <!--주문취소 버튼 생성-->
                     </form>
               
               <!--리스트 끝 --></td>

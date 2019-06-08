@@ -17,30 +17,30 @@
   <link href="css/heroic-features.css" rel="stylesheet">
 <?php
 
-    $mysql_hostname = '220.92.9.189';
-    $mysql_username = 'root';
-    $mysql_password = '5607';
-    $mysql_database = 'mall';
-    $mysql_port = 3306;
+    $mysql_hostname = '220.92.9.189';     //접속ip
+    $mysql_username = 'root';             //접속계정
+    $mysql_password = '5607';             //접속패스워드
+    $mysql_database = 'mall';             //접속DB명
+    $mysql_port = 3306;                   //접속포트
 
 
-    $connect = mysqli_connect($mysql_hostname, $mysql_username, $mysql_password, $mysql_database) or die("ssx");
+    $connect = mysqli_connect($mysql_hostname, $mysql_username, $mysql_password, $mysql_database) or die("DB 연결 실패");   //DB연결
 
     if ($connect) {
-        echo "SUckSEx\n";
+  
     }
     else{
-        echo "fail";
+        echo "fail";    //DB연결 실패시 오류문 출력
     }
-    $givenID = $_GET["itemNum"];
+    $givenID = $_GET["itemNum"];      //introduceitem 페이지에서 즉시구매버튼을 눌렀을때 넘겨받은 상품번호
     echo $givenID;
-    $result = mysqli_query($connect, 'SELECT id, itemname, price, thumb from iteminfo where id ='.$givenID);
-    $data = mysqli_fetch_array($result) ;
-    $idid = $data['id'];
-    $itname = $data['itemname'];
-    $itprice = $data['price'];
-    $itthumb = "/source/" . $data['thumb'];
-    mysqli_close($connect);
+    $result = mysqli_query($connect, 'SELECT id, itemname, price, thumb from iteminfo where id ='.$givenID);    //상품번호로 상품번호, 상품명, 가격, 상품이미지 검색
+    $data = mysqli_fetch_array($result) ;     //입력받은 데이터 배열형태로 반환
+    $idid = $data['id'];            //상품번호 저장
+    $itname = $data['itemname'];    //상품명 저장
+    $itprice = $data['price'];      //상품가격 저장
+    $itthumb = "/source/" . $data['thumb']; //상품이미지 저장
+    mysqli_close($connect); //sql연결 종료
 
 ?>
 </head>
@@ -177,27 +177,27 @@
                                   </tr>
                                   <tr>
                                     <td width="150" height="30" bgcolor="#FFFFFF" align="left">주문자 이름</td>
-                                    <td align="left"><input name="name" type="text" class="minput_gray" id="od_bname" size="20" value=""></td>
+                                    <td align="left"><input name="name" type="text" class="minput_gray" id="od_bname" size="20" value=""></td>      <!--주문자명 입력-->
                                   </tr>
                                   <tr bgcolor="dbdbdb">
                                     <td colspan="2" align="left"></td>
                                   </tr>
                                   <tr>
                                     <td height="30" bgcolor="#FFFFFF" align="left">휴대전화</td>
-                                    <td align="left"><input name="bmobile" type="text" class="minput_gray" id="bmobile" size="15" value=""></td>
+                                    <td align="left"><input name="bmobile" type="text" class="minput_gray" id="bmobile" size="15" value=""></td>    <!--휴대폰번호 입력-->
                                   </tr>
                                   <tr bgcolor="dbdbdb">
                                     <td colspan="2" align="left"></td>
                                   </tr>
                                   <tr>
                                     <td height="30" bgcolor="#FFFFFF" align="left">주소</td>
-                                    <td height="20" align="left"><input name="baddress1" type="text" class="minput_gray" id="baddress1" size="25" value=""></td>
+                                    <td height="20" align="left"><input name="baddress1" type="text" class="minput_gray" id="baddress1" size="25" value=""></td>    <!--주소입력-->
                                   </tr>
 
                                   </tbody></table></td>
                             </tr>
                             <tr>
-                              <td>      <input type="submit" class="btn btn-primary" value="결제">
+                              <td>      <input type="submit" class="btn btn-primary" value="결제">    <!--결제버튼 누를시, completeorder로 넘어감-->
                                   &nbsp;</td>
                             </tr>
                         </tbody></table></td>
@@ -233,10 +233,10 @@
                         <table style="border-top:1px solid #a2a2aa" width="690" cellspacing="1" cellpadding="0" border="0" bgcolor="#ececee">
                             <tbody>
                             <tr>
-                                <td height="80" bgcolor="#FFFFFF">&nbsp;&nbsp;입금 은행</td>
+                                <td height="80" bgcolor="#FFFFFF">&nbsp;&nbsp;입금 은행</td>    
                                 <td bgcolor="#FFFFFF">
                                 <div id="bank_tab1">
-                                    <span id="bank_type1">국민은행 656901-04-251956 김민수</span>
+                                    <span id="bank_type1">국민은행 656901-04-251956 김민수</span>    
                                     <br>
                                 </div>
                                 </td>

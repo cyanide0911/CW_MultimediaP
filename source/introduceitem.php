@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
-  <title>토르컴</title>
+<!--메타데이터 작성-->
+  <title>토르컴</title> <!--제목-->
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -17,33 +17,31 @@
   <link href="css/heroic-features.css" rel="stylesheet">
     <?php
 
-    $mysql_hostname = '220.92.9.189';
-    $mysql_username = 'root';
-    $mysql_password = '5607';
-    $mysql_database = 'mall';
-    $mysql_port = 3306;
+    $mysql_hostname = '220.92.9.189';           //접속ip
+    $mysql_username = 'root';                   //접속계정
+    $mysql_password = '5607';                   //접속패스워드
+    $mysql_database = 'mall';                   //접속DB명
+    $mysql_port = 3306;                         //접속포트
 
 
-    $connect = mysqli_connect($mysql_hostname, $mysql_username, $mysql_password, $mysql_database) or die("succes");
+    $connect = mysqli_connect($mysql_hostname, $mysql_username, $mysql_password, $mysql_database) or die("DB 연결 실패");           //DB연결
 
     if ($connect) {
-        echo "SUckSEx\n";
+
     }
     else{
-        echo "fail";
+        echo "fail";            //접속실패시 올뮤문 출력
     }
-    $givenID = $_GET["pastname"];
+    $givenID = $_GET["pastname"];   //전페이지에서 선택한 상품명 넘김
 
-    $result = mysqli_query($connect, 'SELECT id, itemname, price, thumb, info from iteminfo where id ='.$givenID);
+    $result = mysqli_query($connect, 'SELECT id, itemname, price, thumb, info from iteminfo where id ='.$givenID);      //상품번호, 상품명, 가격, 이미지, 상품정보 검색
 
-        $data = mysqli_fetch_array($result) ;
-        $idid = $data['id'];
-        $itname = $data['itemname'];
-        $itprice = $data['price'];
-        $itthumb = "/source/" . $data['thumb'];
-        $itinfo = "/source/". $data['info'];
-
-    mysqli_select_db($connect, $mysql_database) or die('DB 선택 실패');
+        $data = mysqli_fetch_array($result) ;               //검색한정보 레코드 1개 리턴
+        $idid = $data['id'];                //상품번호 대입
+        $itname = $data['itemname'];         //상품명 대입 
+        $itprice = $data['price'];            //상품가격 대입
+        $itthumb = "/source/" . $data['thumb'];     //상품이미지 대입
+        $itinfo = "/source/". $data['info'];          //상품정보 대입
 
     mysqli_close($connect);
 
@@ -92,7 +90,7 @@
     <div class="page-body">
       <div class="thumb-info">
           <div class="thumb-wrap">
-              <div class="thumb"><img src="<? echo $itthumb ?>"></div>
+              <div class="thumb"><img src="<? echo $itthumb ?>"></div>      <!--상품이미지 출력-->
               
           </div><!-- .thumb-wrap -->
               <div class="info">
@@ -105,18 +103,18 @@
                                       <div id="MK_innerOptWrap">
                                           <div id="MK_innerOptTotal">
                                               <h3 class="tit-prd"><? echo $itname?> </h3>
-                                              <span class="MK_txt-total">상품 금액</span>
+                                              <span class="MK_txt-total">상품 금액</span>               <!--상품가격 출력-->
                                               <strong class="MK_total" id="MK_p_total"><? echo $itprice?></strong>
-                                              <span class="MK_txt-won">원</span>
+                                              <span class="MK_txt-won">원</span>                <!--가격뒤에 '원' 출력-->
                                               <br>
                                               <form method="get" action="purchasepage.php">
                                               <input type="hidden" name="itemNum" value="<? echo $idid?>">
-                                              <input type="submit" class="btn btn-primary" value="구매하기">
+                                              <input type="submit" class="btn btn-primary" value="구매하기">        <!--구매하기 버튼 생성-->
                                               </form>
                                           </div>
                                               
                                           <div class="infoimage">
-                                              <img src="<? echo $itinfo?>">
+                                              <img src="<? echo $itinfo?>">        <!--상품정보 이미지형태로 출력-->
                                           </div>
                                       </div>
                                   </div>

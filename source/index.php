@@ -18,33 +18,32 @@
 
     <?php
 
-    $mysql_hostname = '220.92.9.189';
-    $mysql_username = 'root';
-    $mysql_password = '5607';
-    $mysql_database = 'mall';
-    $mysql_port = 3306;
+    $mysql_hostname = '220.92.9.189'; //접속IP
+    $mysql_username = 'root';       //접속계정
+    $mysql_password = '5607';       //접속패스워드
+    $mysql_database = 'mall';       //접속DB명
+    $mysql_port = 3306;             //접속포트
 
 
-    $connect = mysqli_connect($mysql_hostname, $mysql_username, $mysql_password, $mysql_database) or die("ssx");
+    $connect = mysqli_connect($mysql_hostname, $mysql_username, $mysql_password, $mysql_database) or die("fail");   //DB연결
 
     if ($connect) {
-        echo "SUckSEx\n";
+       
     }
     else{
-        echo "fail";
+        echo "fail";      //DB연결 실패시 오류문 출력
     }
 
-    $result = mysqli_query($connect, 'SELECT id, itemname, price, thumb from iteminfo');
+    $result = mysqli_query($connect, 'SELECT id, itemname, price, thumb from iteminfo');    //상품정보테이블에서 상품번호, 상품명, 상품가격, 상품이미지 검색
 
-    for($cnt = 0 ; $data = mysqli_fetch_array($result) ; $cnt+=1) {
+    for($cnt = 0 ; $data = mysqli_fetch_array($result) ; $cnt+=1) {     //찾은데이터 배열에 대입
         $idid[$cnt] = $data['id'];
         $itname[$cnt] = $data['itemname'];
         $itprice[$cnt] = $data['price'];
         $itthumb[$cnt] = "/source/" . $data['thumb'];
     }
-    mysqli_select_db($connect, $mysql_database) or die('DB 선택 실패');
 
-    mysqli_close($connect);
+    mysqli_close($connect);   //SQL문 종료
 
     ?>
 </head>
@@ -57,7 +56,7 @@
           <a class="navbar-brand" href="index.php"><img class="logo" src="image/logo2.png"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
-          </button>
+          </button>   <!--왼쪽위 망치버튼, 클릭시 메인화면으로 이동-->
           <div class="collapse navbar-collapse" id="navbarResponsive">
               <ul class="navbar-nav ml-auto">
                   <li class="nav-item active">
@@ -66,19 +65,19 @@
                       </a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="keyboard.php">Keyboard</a>
+                      <a class="nav-link" href="keyboard.php">Keyboard</a>    <!--키보드 페이지로 이동-->
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="mouse.php">Mouse</a>
+                      <a class="nav-link" href="mouse.php">Mouse</a>        <!--마우스 페이지로 이동-->
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="headphone.php">Headphone</a>
+                      <a class="nav-link" href="headphone.php">Headphone</a>    <!--헤드폰 페이지로 이동-->
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="mouse pad.php">Mousepad</a>
+                      <a class="nav-link" href="mouse pad.php">Mousepad</a>     <!--마우스패드 페이지로 이동-->
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="searchorder.php">Search Order</a>
+                      <a class="nav-link" href="searchorder.php">Search Order</a> <!--주문조회 페이지로 이동-->
                   </li>
               </ul>
           </div>
@@ -88,15 +87,15 @@
   <div class="container">
 
     <!-- Jumbotron Header -->
-    <header class="jumbotron my-4">
+    <header class="jumbotron my-4">     
         <h1 class="display-3"><img class="fontlogo" src="image/font logo.png"></h1>
 
-      <p class="lead" style="font-family: Fusterd Brush Two; font-size: 80px;" align="center">Upgrade Your Skill</p>
+      <p class="lead" style="font-family: Fusterd Brush Two; font-size: 80px;" align="center">Upgrade Your Skill</p>    <!--로고 출력-->
     </header>
 
     <!-- Page Features -->
     <div class="row text-center">
-      <div class="col-lg-3 col-md-6 mb-4">
+      <div class="col-lg-3 col-md-6 mb-4">          <!--키보드 대표상품  이미지, 상품명, 가격, 구매버튼 화면에 출력-->
         <div class="card h-10">
           <img class="card-img-top" src="<?echo $itthumb[0] ?>" alt="">
           <div class="card-body">
@@ -113,7 +112,7 @@
         </div>
       </div>
 
-      <div class="col-lg-3 col-md-6 mb-4">
+      <div class="col-lg-3 col-md-6 mb-4">      <!--헤드폰 대표상품  이미지, 상품명, 가격, 구매버튼 화면에 출력-->
         <div class="card h-100">
           <img class="card-img-top" src="<? echo $itthumb[4]?>" alt="">
           <div class="card-body">
@@ -129,7 +128,7 @@
         </div>
       </div>
 
-      <div class="col-lg-3 col-md-6 mb-4">
+      <div class="col-lg-3 col-md-6 mb-4">      <!--마우스 대표상품  이미지, 상품명, 가격, 구매버튼 화면에 출력-->
           <div class="card h-100">
               <img class="card-img-top" src="<? echo $itthumb[8]?>" alt="">
               <div class="card-body">
@@ -145,7 +144,7 @@
         </div>
       </div>
 
-      <div class="col-lg-3 col-md-6 mb-4">
+      <div class="col-lg-3 col-md-6 mb-4">      <!--마우스패드 대표상품  이미지, 상품명, 가격, 구매버튼 화면에 출력-->
           <div class="card h-100">
               <img class="card-img-top" src="<? echo $itthumb[12]?>" alt="">
               <div class="card-body">
