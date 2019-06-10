@@ -19,10 +19,10 @@
   <link href="css/heroic-features.css" rel="stylesheet">
     <?php //php문 시작
 
-    $mysql_hostname = '220.92.9.189'; //접속ip
-    $mysql_username = 'root'; //접속계정
-    $mysql_password = '5607'; //접속패스워드
-    $mysql_database = 'mall'; //접속DB명
+    $mysql_hostname = ''; //접속ip
+    $mysql_username = ''; //접속계정
+    $mysql_password = ''; //접속패스워드
+    $mysql_database = ''; //접속DB명
     $mysql_port = 3306; //접속포트
 
 
