@@ -17,9 +17,9 @@
   <link href="css/heroic-features.css" rel="stylesheet">
     <?php
 
-    $mysql_hostname = '220.92.9.189';
-    $mysql_username = 'root';
-    $mysql_password = '5607';
+    $mysql_hostname = '';
+    $mysql_username = '';
+    $mysql_password = '';
     $mysql_database = 'mall';
     $mysql_port = 3306;
 

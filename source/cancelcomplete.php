@@ -17,9 +17,9 @@
     <link href="css/heroic-features.css" rel="stylesheet">
     <?php
 
-    $mysql_hostname = '220.92.9.189';   //접속할주소 설정
-    $mysql_username = 'root';           //접속할 계정설정
-    $mysql_password = '5607';           //계정암호 입력
+    $mysql_hostname = '';   //접속할주소 설정
+    $mysql_username = '';           //접속할 계정설정
+    $mysql_password = '';           //계정암호 입력
     $mysql_database = 'mall';           //DB명입력
     $mysql_port = 3306;                 //포트번호 입력
   
